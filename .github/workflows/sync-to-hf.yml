@@ -1,0 +1,30 @@
+name: Sync to HuggingFace
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'hf-deploy/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Push to HuggingFace
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config user-name "github-actions"
+          git config user.email "actions@github.com"
+          
+          cd hf-deploy
+          git init
+          git add .
+          git commit -m "sync from GitHub" || echo "No changes"
+          
+          git remote add hf https://sybululu:${HF_TOKEN}@huggingface.co/spaces/sybululu/privacy-policy-checker
+          git push hf master --force
