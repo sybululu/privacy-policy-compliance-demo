@@ -25,5 +25,5 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "sync from GitHub" || echo "No changes"
-          git remote add ms https://oauth2:${MS_TOKEN}@www.modelscope.cn/sybululu/privacy-policy-checker.git
+          git remote add ms https://oauth2:${MS_TOKEN}@www.modelscope.cn/studios/sybululu/privacy-policy-checker.git
           git push ms master --force
