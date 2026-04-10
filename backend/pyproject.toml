@@ -1,0 +1,29 @@
+[project]
+name = "privacy-policy-analyzer"
+version = "1.0.0"
+description = "Backend service for privacy policy compliance analysis based on CAPP-130"
+requires-python = ">=3.9"
+
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.3",
+    "python-multipart>=0.0.6",
+    "transformers>=4.37.0",
+    "torch>=2.1.0",
+    "sentencepiece>=0.1.99",
+    "huggingface-hub>=0.19.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "httpx>=0.25.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

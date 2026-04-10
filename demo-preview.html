@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策合规审查Demo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #FAFAFA;
+            color: #1F2937;
+            padding: 16px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #E5E7EB;
+            margin-bottom: 20px;
+        }
+        .header h1 { font-size: 20px; color: #D97706; }
+        .header p { font-size: 14px; color: #6B7280; margin-top: 8px; }
+        
+        .score-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .score-ring {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            position: relative;
+        }
+        .score-ring svg { transform: rotate(-90deg); }
+        .score-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            font-weight: 700;
+            color: #F59E0B;
+        }
+        .risk-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .risk-medium { background: #FEF3C7; color: #D97706; }
+        .risk-high { background: #FEE2E2; color: #DC2626; }
+        .risk-low { background: #D1FAE5; color: #059669; }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 0 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .count-badge {
+            background: #E5E7EB;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #6B7280;
+        }
+        
+        .violation-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid #F59E0B;
+        }
+        .violation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .violation-id {
+            background: #FEF3C7;
+            color: #D97706;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .confidence {
+            font-size: 12px;
+            color: #6B7280;
+        }
+        .violation-type {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .violation-text {
+            font-size: 13px;
+            color: #4B5563;
+            background: #F9FAFB;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .law-article {
+            font-size: 12px;
+            color: #6B7280;
+            margin-bottom: 8px;
+        }
+        .suggestion {
+            font-size: 13px;
+            color: #1F2937;
+            background: #FFFBEB;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .suggestion-label {
+            font-weight: 600;
+            color: #D97706;
+            margin-bottom: 4px;
+        }
+        
+        .tech-info {
+            background: #F3F4F6;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #6B7280;
+        }
+        .tech-info h3 {
+            font-size: 14px;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+        .tech-item {
+            margin: 6px 0;
+        }
+        .tech-label { color: #9CA3AF; }
+        .tech-value { color: #1F2937; font-weight: 500; }
+        
+        .note {
+            text-align: center;
+            padding: 20px;
+            color: #9CA3AF;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>隐私政策合规审查</h1>
+        <p>基于浙大CAPP-130 · 风险识别F1=92.0%</p>
+    </div>
+    
+    <div class="score-card">
+        <div class="score-ring">
+            <svg width="120" height="120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#E5E7EB" stroke-width="10"/>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#F59E0B" stroke-width="10" 
+                    stroke-dasharray="327" stroke-dashoffset="98" stroke-linecap="round"/>
+            </svg>
+            <div class="score-value">70</div>
+        </div>
+        <div class="risk-badge risk-medium">中等风险</div>
+        <p style="margin-top: 12px; font-size: 14px; color: #6B7280;">
+            通过 8/12 项合规检查
+        </p>
+    </div>
+    
+    <div class="section-title">
+        <span>⚠️ 发现违规条款</span>
+        <span class="count-badge">4项</span>
+    </div>
+    
+    <div class="violation-card">
+        <div class="violation-header">
+            <span class="violation-id">I1</span>
+            <span class="confidence">置信度 85.0%</span>
+        </div>
+        <div class="violation-type">收集范围超出必要</div>
+        <div class="violation-text">
+            "我们收集您的所有浏览记录、位置信息和通讯录，以便为您提供个性化服务"
+        </div>
+        <div class="law-article">📄 《个人信息保护法》第六条</div>
+        <div class="suggestion">
+            <div class="suggestion-label">💡 mT5整改建议</div>
+            明确界定个人信息收集的具体范围，删除非必要的收集项目。建议逐一列举收集的信息类型，并说明每类信息的收集必要性。
+        </div>
+    </div>
+    
+    <div class="violation-card">
+        <div class="violation-header">
+            <span class="violation-id">I3</span>
+            <span class="confidence">置信度 90.0%</span>
+        </div>
+        <div class="violation-type">未获得用户同意</div>
+        <div class="violation-text">
+            "注册即表示同意本协议所有条款"
+        </div>
+        <div class="law-article">📄 《个人信息保护法》第十四条</div>
+        <div class="suggestion">
+            <div class="suggestion-label">💡 mT5整改建议</div>
+            建立明示同意机制，移除默认同意选项。在收集敏感信息前必须获取用户的明确、单独同意。
+        </div>
+    </div>
+    
+    <div class="violation-card">
+        <div class="violation-header">
+            <span class="violation-id">I5</span>
+            <span class="confidence">置信度 80.0%</span>
+        </div>
+        <div class="violation-type">共享第三方未告知</div>
+        <div class="violation-text">
+            "我们可能与广告合作伙伴和第三方服务商共享您的个人信息"
+        </div>
+        <div class="law-article">📄 《个人信息保护法》第二十三条</div>
+        <div class="suggestion">
+            <div class="suggestion-label">💡 mT5整改建议</div>
+            详细披露与第三方共享个人信息的情况，包括接收方名称、处理目的、共享信息类型等。
+        </div>
+    </div>
+    
+    <div class="violation-card">
+        <div class="violation-header">
+            <span class="violation-id">I7</span>
+            <span class="confidence">置信度 90.0%</span>
+        </div>
+        <div class="violation-type">留存期限不合理</div>
+        <div class="violation-text">
+            "您的数据将被永久保存在我们的服务器上"
+        </div>
+        <div class="law-article">📄 《个人信息保护法》第十九条</div>
+        <div class="suggestion">
+            <div class="suggestion-label">💡 mT5整改建议</div>
+            根据法律要求和业务需要设定合理的数据留存期限，避免过度存储。超过必要期限后应主动删除。
+        </div>
+    </div>
+    
+    <div class="tech-info">
+        <h3>🔧 技术栈</h3>
+        <div class="tech-item">
+            <span class="tech-label">风险识别模型：</span>
+            <span class="tech-value">浙大CAPP-130 RoBERTa/PERT (F1=92.0%)</span>
+        </div>
+        <div class="tech-item">
+            <span class="tech-label">整改建议生成：</span>
+            <span class="tech-value">中文增强版mT5 (IDEA-CCNL)</span>
+        </div>
+        <div class="tech-item">
+            <span class="tech-label">检查指标：</span>
+            <span class="tech-value">12项违规指示符 (I1-I12)</span>
+        </div>
+    </div>
+    
+    <div class="note">
+        📱 此为静态预览页面，演示UI设计<br>
+        实际功能需部署后端服务
+    </div>
+</body>
+</html>
