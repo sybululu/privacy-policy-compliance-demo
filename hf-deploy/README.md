@@ -1,7 +1,7 @@
 ---
 title: Privacy Policy Compliance Checker
 emoji: 🛡️
-colorFrom: orange
+colorFrom: red
 colorTo: yellow
 sdk: docker
 pinned: false
