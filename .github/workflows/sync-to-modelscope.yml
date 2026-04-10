@@ -1,0 +1,29 @@
+name: Sync to ModelScope
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'hf-deploy/**'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Push to ModelScope
+        env:
+          MS_TOKEN: ${{ secrets.MS_TOKEN }}
+        run: |
+          cd hf-deploy
+          git init
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "sync from GitHub" || echo "No changes"
+          git remote add ms https://oauth2:${MS_TOKEN}@www.modelscope.cn/sybululu/privacy-policy-checker.git
+          git push ms master --force
