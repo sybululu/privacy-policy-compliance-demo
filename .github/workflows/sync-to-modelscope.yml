@@ -26,5 +26,6 @@ jobs:
           git add .
           git commit -m "sync from GitHub" || echo "No changes"
           git remote add ms https://oauth2:${MS_TOKEN}@www.modelscope.cn/studios/sybululu/privacy-policy-checker.git
-          git pull ms master --allow-unrelated-histories --no-edit || echo "No remote changes"
+          git fetch ms
+          git merge ms/master --allow-unrelated-histories --no-edit || git checkout --theirs . && git add . && git commit -m "merge"
           git push ms master
