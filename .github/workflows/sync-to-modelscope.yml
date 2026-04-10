@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       
       - name: Push to ModelScope
         env:
@@ -24,8 +22,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "sync from GitHub" || echo "No changes"
+          git commit -m "sync"
+          git branch -M main
           git remote add ms https://oauth2:${MS_TOKEN}@www.modelscope.cn/studios/sybululu/privacy-policy-checker.git
-          git fetch ms
-          git merge ms/master --allow-unrelated-histories --no-edit || git checkout --theirs . && git add . && git commit -m "merge"
-          git push ms master
+          git push -f ms main
